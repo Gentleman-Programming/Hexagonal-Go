@@ -13,6 +13,6 @@ func (r *Repository) GetUser(ctx context.Context, username string) (*models.User
 	return &models.User{}, nil
 }
 
-func NewRepository() *Repository {
+func NewRepositoryService() *Repository {
 	return &Repository{}
 }

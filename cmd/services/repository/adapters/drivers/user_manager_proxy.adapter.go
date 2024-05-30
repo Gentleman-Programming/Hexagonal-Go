@@ -17,6 +17,7 @@ func (a *UserManagerProxyAdapter) GetUser(username string) (*models.User, error)
 
 func NewUserManagerProxyAdapter(ctx context.Context, repository *repository.Repository) UserManagerProxyAdapter {
 	return UserManagerProxyAdapter{
+		ctx:        ctx,
 		repository: repository,
 	}
 }

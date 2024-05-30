@@ -6,8 +6,6 @@ import (
 	"context"
 )
 
-type GetUser func(username string) (string, error)
-
 type UserQueryerAdapter struct {
 	ctx    context.Context
 	driver repository_drivers.ForManagingUser
