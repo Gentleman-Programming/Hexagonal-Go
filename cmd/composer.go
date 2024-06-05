@@ -21,11 +21,11 @@ func Compose() dashboard_ports.ForUser {
 	controlPlane := control_plane.NewControlPlaneService()
 
 	// Create repository drivers
-	userManagerProxyAdapter := repository_adapters.NewUserManagerProxyAdapter(ctx, repository)
+	userManagerProxyAdapter := repository_adapters.NewUserProxyAdapter(ctx, repository)
 
 	// Create control plane drivers
-	userAuthenticationManagerAdapter := control_plane_adapters.NewAuthenticationManagerProxyAdapter(ctx, controlPlane)
-	userAuthorizationManagerAdapter := control_plane_adapters.NewAuthorizationManagerProxyAdapter(ctx, controlPlane)
+	userAuthenticationManagerAdapter := control_plane_adapters.NewAuthenticatorProxyAdapter(ctx, controlPlane)
+	userAuthorizationManagerAdapter := control_plane_adapters.NewAuthorizerProxyAdapter(ctx, controlPlane)
 
 	// Create dashboard api drivens
 	userAuthenticatorAdapter := adapters.NewUserAuthenticatorAdapter(ctx, &userAuthenticationManagerAdapter)
@@ -50,11 +50,11 @@ func ComposeMock() dashboard_ports.ForUser {
 	controlPlane := control_plane.NewControlPlaneService()
 
 	// Create repository drivers
-	userManagerProxyAdapter := repository_adapters.NewUserManagerProxyAdapter(ctx, repository)
+	userManagerProxyAdapter := repository_adapters.NewUserProxyAdapterMock(ctx, repository)
 
 	// Create control plane drivens
-	userAuthenticationManagerAdapter := control_plane_adapters.NewAuthenticationManagerProxyAdapter(ctx, controlPlane)
-	userAuthorizationManagerAdapter := control_plane_adapters.NewAuthorizationManagerProxyAdapter(ctx, controlPlane)
+	userAuthenticationManagerAdapter := control_plane_adapters.NewAuthenticatorProxyAdapterMock(ctx, controlPlane)
+	userAuthorizationManagerAdapter := control_plane_adapters.NewAuthorizerProxyAdapterMock(ctx, controlPlane)
 
 	// Create dashboard api drivens
 	userAuthenticator := adapters.NewUserAuthenticatorAdapter(ctx, &userAuthenticationManagerAdapter)

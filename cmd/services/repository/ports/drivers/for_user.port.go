@@ -4,6 +4,6 @@ import (
 	"HEXAGONAL-GO/cmd/services/repository/models"
 )
 
-type ForManagingUser interface {
+type ForUser interface {
 	GetUser(username string) (*models.User, error)
 }

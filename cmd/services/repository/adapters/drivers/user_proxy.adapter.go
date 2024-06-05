@@ -6,17 +6,17 @@ import (
 	"context"
 )
 
-type UserManagerProxyAdapter struct {
+type UserProxyAdapter struct {
 	ctx        context.Context
 	repository *repository.Repository
 }
 
-func (a *UserManagerProxyAdapter) GetUser(username string) (*models.User, error) {
+func (a *UserProxyAdapter) GetUser(username string) (*models.User, error) {
 	return a.repository.GetUser(a.ctx, username)
 }
 
-func NewUserManagerProxyAdapter(ctx context.Context, repository *repository.Repository) UserManagerProxyAdapter {
-	return UserManagerProxyAdapter{
+func NewUserProxyAdapter(ctx context.Context, repository *repository.Repository) UserProxyAdapter {
+	return UserProxyAdapter{
 		ctx:        ctx,
 		repository: repository,
 	}
